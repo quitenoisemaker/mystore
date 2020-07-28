@@ -1,0 +1,308 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-image: url("../img/b.jpg");
+	font-family: verdana, tahoma, serif;
+	
+}
+.nav-size{
+	padding: 10px 0px;
+}
+.logo-link{
+	padding: 0px;
+}
+.img-logo{
+	width: 60px;
+	height: 50px;
+	margin-left: 20px;
+	margin-right: 30px;
+}
+.margin-div{
+	margin-top: 30px;
+}
+
+.margin-section h2{
+	margin-bottom: 20px;
+	margin-top: 30px;
+	}
+
+
+.content-details{
+	background-color: white;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.misc{
+	margin-top: 15px;
+}
+.floating-link{
+	float: left;
+	margin-left: 25px;
+	color: white;
+	background-color: #20B2AA;
+	padding: 5px;
+	font-size: 14px;
+}
+
+
+
+.floating-link:hover{
+	background-color: white;
+	color: #20B2AA;
+	text-decoration: none;
+}
+
+.comment{
+	float: right;
+	margin-right: 15px;
+	padding: 10px;
+}
+
+.number{
+	color: white;
+	background-color: black;
+	padding: 3px 6px;
+}
+
+.item{
+	padding: 0px;
+}
+
+
+.month-item:first-child,.month-item:last-child
+{
+	border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.month-item a:hover{
+	text-decoration: none;
+}
+
+
+.item a {
+	padding-right: 0px;
+	padding-top: 12px;
+	color: black;
+}
+
+.item img{
+	padding-right: 8px;
+	padding-top: 5px;
+	padding-bottom: 4px;
+}
+
+.post-header{
+	padding: 15px;
+	color: white;
+	background-color: #71818c;
+	font-size: 17px;
+}
+.post{
+	margin-bottom: 30px;
+}
+
+.content-padding{
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.link-pad{
+	padding:7px;
+}
+
+
+.form-margin{
+	margin: 15px;
+}
+
+.zero-radius{
+	border-radius: 0px;
+}
+
+#commentBox{
+	background-color: white;
+	height: 450px;
+}
+.comments{
+	background-color: white;
+}
+
+
+.list-group-item p{
+	margin-right: 35px;
+}
+.marg{
+	margin-top: 40px;
+}
+
+.list-group-item b{
+	font-size: 18px;
+}
+
+
+.ca-add{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+
+
+.word-clip{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 15px;
+	text-decoration: none;
+}
+.word-clip:hover{
+	text-decoration: none;
+}
+
+
+
+.ruler{
+	position: absolute;
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: red;
+}
+
+iframe{
+	width: 100%;
+}
+
+.scroll-up{
+	padding:10px 15px;
+	bottom: 30px;
+	right: 20px;
+	position: fixed;
+	background-color: white;
+	z-index: 9999;
+	border-radius: 20px;
+	display: none;
+}
+
+.scroll-up:hover{
+	background-color: #337ab7;
+	color: white;
+}
+
+.post .side-link{
+	background-color: white;
+	padding: 7px;
+}
+
+.caption-position a{
+	color: white;
+	font-size: 25px;
+}
+
+.caption-position a:hover{
+	text-decoration: none;
+}
+
+
+
+#archive1,#archive2,#archive3,#archive4,#archive5,#archive6{
+			color: maroon;
+			margin-top: 2px;
+			margin-bottom: 0px;
+		}
+		.carousel-margin {
+			margin-top:100px;
+			margin-bottom: 0px;
+
+			}
+
+
+.carousel-inner {
+    height: 200px;
+   width: 450px;
+
+  }
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+
+      height: 200px;
+   width:  450px;
+}
+
+
+ .carousel-control {
+    position: absolute;
+    top: 20%;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    margin-top: -20px;
+    font-size: 30px;
+    font-weight: 60;
+    line-height: 30px;
+    color: #ffffff;
+    text-align: center;
+    background: #222222;
+    border: 3px solid #ffffff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+        border-radius: 23px;
+    opacity: 0.9;
+    filter: alpha(opacity=50);
+}
+.carousel-control.right {
+    right: 15px;
+    left: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    background: #333333;
+    background: rgba(0, 0, 0, 0.75);
+}
+.carousel-caption p {
+    margin-bottom: 0;
+}
+.carousel-indicators{
+ top:0px;
+   
+}
+.bg_color{
+	
+	background-color: #9c9f84;
+	border-radius: 4px;
+
+}
+.section {
+	margin: 20px;
+}
+
+
+    .carousel-caption {
+    background: rgba(0, 0, 0, 0.55);
+    }
+    .carousel-control {
+        top: 50%;
+    }
+
+footer{
+			margin-top: 40px;
+			border:1px solid white;
+			background-color: darkgrey;
+			text-align: center;
+			font-size: 14px;
+			font-style: bold,italic;
+			font-family: Helvetica,arial;
+			color: white;
+			
+		}
