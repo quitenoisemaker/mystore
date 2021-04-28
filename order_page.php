@@ -1,7 +1,7 @@
 
 <?php
 
-
+include ("function/function.php");
 if (isset($_POST['submit'])) {
 #sanitize the input from users
 
@@ -24,7 +24,7 @@ if (!empty($email) && !empty($fname) && !empty($lname) && !empty($phone)) {
   $_SESSION['quantity'] = $quantity;
   $_SESSION['finalamount'] = $finalamount;
 
-  header('location:pay.php');
+  header('location:pay');
 }else{
   
   $error= "One or more fields are Empty";
@@ -46,6 +46,8 @@ if (!empty($email) && !empty($fname) && !empty($lname) && !empty($phone)) {
   <link rel="stylesheet" type="text/css" href="bootstrap-4.5.0-dist/css/bootstrap.css" >
    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.0-dist/css/bootstrap.grid.css">
    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.0-dist/css/bootstrap.grid.min.css" >
+   <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
   <script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
   <script src="bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
@@ -85,7 +87,7 @@ if (!empty($email) && !empty($fname) && !empty($lname) && !empty($phone)) {
 
                  
                   <h2 style="padding: 20px"><b>Fill your correct datails</b></h2>
-                  <form method="post" action="order_page.php" id="" autocomplete="off">
+                  <form method="post" action="order_page" id="">
 
                   <div class="row text-left">
                     <div class="col-md-6">
@@ -138,7 +140,7 @@ if (!empty($email) && !empty($fname) && !empty($lname) && !empty($phone)) {
            <hr>
               <div class="row ">
                 <div class="col " style="padding: 10px">
-                  <h3><b>NGN 3,000.00</b></h3>
+                  <h3><b>NGN <?php echo getPrice(); ?></b></h3>
                 </div>
               </div>
 
