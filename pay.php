@@ -88,7 +88,7 @@ $row_seo=mysqli_fetch_array($get_seo);
                                 
                                 while($row=$result->fetch_assoc()){
                              
-                                    $pro_price= "SELECT * FROM products where product_id=$row[p_id]";
+                                    $pro_price= "SELECT * FROM products where product_id=$row[p_id] AND stock='0'";
                                 $result2 = $conn->query($pro_price);
 
                                 

@@ -54,6 +54,9 @@ function format_date($date){
                                     <small>
                                         On <?php echo format_date($row['date_created'])  ?> 
                                     </small>
+                                    <?php if ($row_product['stock']==1) { ?>
+                                                        <span class="badge badge-pill badge-warning">Out of stock</span>
+                                                  <?php  } ?>
                                 </span>
                             </div>
                         </div>

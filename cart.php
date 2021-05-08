@@ -58,8 +58,14 @@ include ('include/header.php');
                             <tr class="table-light" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);" id="user-<?php echo $row['p_id'] ?>">
                                 <div>
                                     <th>
+                                        <?php if ($row_product['stock']==1) { ?>
+                                                        <span class="badge badge-pill badge-warning">Out of stock</span>
+                                                  <?php  } ?>
                                         <div class="d-flex flex-wrap p-1"><img src="admin_section/product_images/<?php echo "resized_". $row_product['product_image'] ?>" width="50" class="img-fluid"> <span class="p-2 text-dark"><b>
-                                                    <?php echo $row_product['product_title'] ?></b></span></div>
+                                                    <?php echo $row_product['product_title'] ?></b></span>
+                                                    
+                                                </div>
+                                                
                                         <button class="float-right remove btn btn-danger btn-sm" utype="<?php echo $row_product['product_title'] ?>" subTotal="<?php echo getUpdateItem($row_product['product_id']) ?>" id="<?php echo $row['p_id'] ?>"><i class="fas fa-trash"></i> Remove</button>
                                     </th>
                                     <td><select class="form-control form-control-sm quantity" name="<?php echo $row_product['product_id'] ?>">
@@ -90,11 +96,15 @@ include ('include/header.php');
                                         <?php echo number_format($row_product['product_price'])  ?>
                                     </td>
                                     <td> &#8358 <span class="subTotal"><?php echo number_format(getUpdateItem($row_product['product_id'])) ?></span></td>
+                                    
                                 </div>
+
                             </tr>
+
                             <?php  } ?>
                             <?php  } ?>
                             <?php }else{
+
 
                          echo "<br> 
                                     <div class='text-center'>
@@ -105,6 +115,7 @@ include ('include/header.php');
                     } ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
             <?php

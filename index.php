@@ -56,7 +56,13 @@ include ('include/header.php');
                             <div class="row justify-content-center">
                                 <img src="admin_section/product_images/<?php echo "resized_". $row['product_image']; ?>" width="200" alt="product image" class="img-fluid p-4 te">
                             </div>
+
+                            
                             <div class="promo-info">
+                                <?php if ($row['stock']==1) { ?>
+                                    <span class="badge badge-pill badge-danger">Out of stock</span>
+                                <?php } ?>
+                                
                                 <h5 class="container">
                                     <?php echo ucfirst($row['product_title']); ?><br><strong style="color: red; font-size: 16px"> &#8358
                                         <?php echo number_format($row['product_price']) ; ?></strong>
@@ -91,7 +97,12 @@ include ('include/header.php');
                                     <img src="admin_section/product_images/<?php echo "resized_". $row['product_image']; ?>" width="225" alt="..." class="img-fluid">
                                 </div>
                                 <div class="row justify-content-center p-1">
-                                    <h4>Product Details</h4>
+                                    <h5>Product Details </h5>
+                                    <?php if ($row['stock']==1) { ?>
+                                    <div>
+                                    <span class="badge badge-pill badge-danger p-1">Out of stock</span>
+                                </div>
+                                    <?php } ?>
                                     <div class="col-lg-9">
                                         <p>
                                             <?php echo $row['product_desc']; ?>
@@ -172,7 +183,12 @@ include ('include/header.php');
                             </div>
                             <div class="modal-footer justify-content-center">
                                 <span class="text-left"><button class="btn btn-light" data-dismiss="modal" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">Continue shopping</button></span>
-                                <button name="submit" class="btn btn-dark">Add to cart</button>
+
+                                <?php if ($row['stock']==0) { ?>
+                                    <button name="submit" class="btn btn-dark">Add to cart</button>
+                                <?php }?>
+                                
+
                             </div>
                             </form>
                         </div>

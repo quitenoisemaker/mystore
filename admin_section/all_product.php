@@ -47,7 +47,15 @@ function format_date($date){
       
       <td><?php echo $row_payment['product_title']  ?></td>
       <td><?php echo number_format($row_payment['product_price'])?></td>
-      <td><a href="edit_product?id=<?php echo $row_payment['product_id']  ?>" class="btn btn-sm btn-warning">Edit</a> <a href="all_product?del=<?php echo $row_payment['product_id']?>" onclick="return confirm('Do you want to delete');" class="btn btn-sm btn-danger" >Delete</a></td>
+      <td>
+        <?php if ($row_payment['stock']== 0) { ?>
+          <a href="all_product?stock=<?php echo $row_payment['product_id']?>" onclick="return confirm('Do you want to make this action');" class="btn btn-sm btn-success" >In-Stock</a>
+       <?php  }else{ ?>
+          
+          <a href="all_product?stock1=<?php echo $row_payment['product_id']?>" onclick="return confirm('Do you want to make this action'');" class="btn btn-sm btn-danger" >Out of Stock</a>
+      <?php  } ?>
+        
+        <a href="edit_product?id=<?php echo $row_payment['product_id']  ?>" class="btn btn-sm btn-warning">Edit</a> <a href="all_product?del=<?php echo $row_payment['product_id']?>" onclick="return confirm('Do you want to delete');" class="btn btn-sm btn-danger" >Delete</a></td>
     </tr>
     
       <?php } ?>
@@ -84,6 +92,28 @@ function format_date($date){
       unlink('product_images/resized_'.$ftch['product_image']);
        
       echo "<script>alert('Product has been deleted')</script>";
+          echo "<script>window.open('all_product','_self')</script>";
+      }
+
+      if(isset($_GET['stock'])){
+  
+      $id=$_GET['stock'];
+
+      $update_product="UPDATE products SET stock='1' WHERE product_id ='$id' ";
+      $sql= mysqli_query($conn, $update_product);
+       
+      echo "<script>alert('Product has been updated')</script>";
+          echo "<script>window.open('all_product','_self')</script>";
+      }
+
+      if(isset($_GET['stock1'])){
+  
+      $id=$_GET['stock1'];
+
+      $update_product="UPDATE products SET stock='0' WHERE product_id ='$id' ";
+      $sql= mysqli_query($conn, $update_product);
+       
+      echo "<script>alert('Product has been updated')</script>";
           echo "<script>window.open('all_product','_self')</script>";
       }
      ?>

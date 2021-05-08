@@ -107,7 +107,7 @@ function total_price(){
 	$result = $conn->query($sql);
 	while($row=$result->fetch_assoc()){
 		$pro_id= $row["p_id"];
-		$pro_price= "SELECT * FROM products where product_id='$pro_id'";
+		$pro_price= "SELECT * FROM products where product_id='$pro_id' AND stock='0'";
 		$result2 = $conn->query($pro_price);
 		while($row2=$result2->fetch_assoc()){
 			$product_price= array($row2["product_price"]);
@@ -130,7 +130,7 @@ function total_price2(){
 		$quantity= $row_cart["qty"];
 		$product_id=$row_cart['p_id'];	
 
-	$get_price =mysqli_query($conn, "SELECT * FROM `products` WHERE `product_id`='$product_id'");
+	$get_price =mysqli_query($conn, "SELECT * FROM `products` WHERE `product_id`='$product_id' AND `stock`='0'");
 	while ( $row_price = mysqli_fetch_array($get_price)) {
 	
 		$price= $row_price["product_price"];
@@ -171,7 +171,7 @@ function getUpdateItem($product_id){
 	$row_qty=mysqli_fetch_array($get_qty);
 	$quantity= $row_qty["qty"];	
 
-	$get_price =mysqli_query($conn, "SELECT * FROM `products` WHERE `product_id`='$product_id'");
+	$get_price =mysqli_query($conn, "SELECT * FROM `products` WHERE `product_id`='$product_id' AND `stock`='0'");
 	$row_price = mysqli_fetch_array($get_price);
 	$price= $row_price["product_price"];
 
