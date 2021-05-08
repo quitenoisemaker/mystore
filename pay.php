@@ -10,18 +10,38 @@ if (!(isset($_SESSION['email']))) {
 $get_customer=mysqli_query($conn, "SELECT * FROM customers WHERE customer_email='$_SESSION[email]'");
 $row_customer=mysqli_fetch_array($get_customer);
 
+$get_paymentkey=mysqli_query($conn, "SELECT * FROM payment_key WHERE name='paystack'");
+$row_paymentkey=mysqli_fetch_array($get_paymentkey);
+
+$get_seo=mysqli_query($conn, "SELECT * FROM site_seo");
+$row_seo=mysqli_fetch_array($get_seo);
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Payment</title>
+    
     <html lang="eng">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- SEO Meta description -->
+    <meta name="description" content="<?php echo $row_seo['site_description'] ?>">
+    <!-- keywords -->
+    <meta name="keywords" content="<?php echo $row_seo['site_keyword'] ?>">
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="<?php echo $row_seo['site_name'] ?>" /> <!-- website name -->
+    <meta property="og:site" content="<?php echo $row_seo['site_link'] ?>" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+    <!--title-->
+    <title><?php echo $row_seo['site_tagline'] ?></title>
     <link rel="shortcut icon" href="img\logo_g3.jpg">
     <link rel="apple-touch-icon" href="img\logo_g3.jpg">
     <link rel="apple-touch-icon" sizes="72x72" href="img\logo_g3.jpg">
@@ -76,7 +96,7 @@ $row_customer=mysqli_fetch_array($get_customer);
 
                                 ?>
                             <hr style="margin: 3px">
-                            <div class="d-flex flex-wrap"><img src="admin_section/product_images/<?php echo $row_product['product_image'] ?>" width="35" class="img-fluid"></div><span class=" text-dark"><b>
+                            <div class="d-flex flex-wrap"><img src="admin_section/product_images/<?php echo "resized_". $row_product['product_image'] ?>" width="35" class="img-fluid"></div><span class=" text-dark"><b>
                                     <?php echo $row_product['product_title'] ?></b><br>
                                 <small style="color: red">&#8358
                                     <?php echo number_format($row_product['product_price'])  ?> </small>
@@ -234,7 +254,7 @@ $(document).on('submit', '#billing', function(e) {
     let pay_money = '<?php echo total_price2() ?>';
 
     var handler = PaystackPop.setup({
-        key: 'pk_test_8da0196b3c9020e43f5e7435212b68beeb0a5858', // Replace with your public key
+        key: '<?php echo $row_paymentkey['pkey'] ?>', // Replace with your public key
         email: '<?php echo $row_customer['customer_email'] ?>',
         amount: <?php echo (total_price2() * 100) ?>,
         currency: "NGN",

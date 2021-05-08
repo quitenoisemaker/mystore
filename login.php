@@ -10,7 +10,7 @@ $finalamount=$_SESSION['finalamount'];
 <!--body content wrap start-->
 <div class="main">
     <!--promo section start-->
-    <section class="promo-section pb-50 pt-100">
+    <section class="promo-section pb-50" style="padding-top: 120px">
         <div class="container" style="padding: 20px;">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -23,13 +23,13 @@ $finalamount=$_SESSION['finalamount'];
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" type="email" id="email" name="email" value="<?php if (isset($_POST['email'])) echo($email); ?>" placeholder="Enter email address">
+                                            <input class="form-control" type="email" id="email" name="email" required value="<?php if (isset($_POST['email'])) echo($email); ?>" placeholder="Enter email address">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" type="password" id="password" name="password" value="<?php if (isset($_POST['phone'])) echo($phone); ?>" placeholder="Enter phone number">
+                                            <input class="form-control" type="password" id="password" name="password" required value="<?php if (isset($_POST['phone'])) echo($phone); ?>" placeholder="Enter phone number">
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@ $finalamount=$_SESSION['finalamount'];
                                 <div class="row">
                                     <div class="col ">
                                         <div class="form-group form-check">
-                                            <a href=""><label class="form-check-label">Forget your password?</label></a>
+                                            <a href="forget_password"><label class="form-check-label">Forget your password?</label></a>
                                         </div>
                                     </div>
                                 </div>

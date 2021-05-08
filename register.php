@@ -10,7 +10,7 @@ $finalamount=$_SESSION['finalamount'];
 <!--body content wrap start-->
 <div class="main">
     <!--promo section start-->
-    <section class="promo-section pb-50 pt-100">
+    <section class="promo-section pb-50" style="padding-top: 120px">
         <div class="container" style="padding: 20px;">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -22,34 +22,47 @@ $finalamount=$_SESSION['finalamount'];
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <!-- <label>Your name</label> -->
-                                            <input class="form-control" type="text" id="" name="fname" value="<?php if (isset($_POST['fname'])) echo($fname); ?>" placeholder="First name">
+                                            <input class="form-control" type="text" id="" name="fname" required value="<?php if (isset($_POST['fname'])) echo($fname); ?>" placeholder="First name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group" style="">
-                                            <input class="form-control" type="text" id="" name="lname" value="<?php if (isset($_POST['lname'])) echo($lname); ?>" placeholder="Last name">
+                                            <input class="form-control" type="text" id="" name="lname" required value="<?php if (isset($_POST['lname'])) echo($lname); ?>" placeholder="Last name">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /row -->
                                 <div class="row text-left">
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Your email address</label>
-                                            <input class="form-control" type="email" id="" name="email" value="<?php if (isset($_POST['email'])) echo($email); ?>" placeholder="Enter email address">
+                                            <input class="form-control" type="email" id="" name="email" required value="<?php if (isset($_POST['email'])) echo($email); ?>" placeholder="Enter email address">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" type="password" id="" name="password" value="" placeholder="Enter Password">
+                                            <input class="form-control" type="password" id="" name="password" required value="" placeholder="Enter Password">
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input class="form-control" type="text" id="" name="city" required value="" placeholder="Enter City or State">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Your phone Number</label>
+                                            <input class="form-control" type="phone" id="" name="phone" required value="" placeholder="Enter phone number">
+                                        </div>
+                                        
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Your phone Number</label>
-                                            <input class="form-control" type="phone" id="" name="phone" value="<?php if (isset($_POST['phone'])) echo($phone); ?>" placeholder="Enter phone number">
+                                            <label for="address">Delivery Address</label>
+                                            <textarea class="form-control" id="address" name="address" required rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -58,11 +71,11 @@ $finalamount=$_SESSION['finalamount'];
                       echo "<div class='text-danger'>$error</div>";
                     }
                    ?>
-                                <br><br>
+                                <br>
                                 <div class="row">
                                     <div class="col ">
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" name="">
+                                            <input type="checkbox" class="form-check-input" name="" required>
                                             <label class="form-check-label">Click to agree to our terms and conditions</label>
                                         </div>
                                     </div>

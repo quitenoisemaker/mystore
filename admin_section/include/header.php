@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Genius">
-    <title>Genius Admin</title>
+    <meta name="author" content="Mystore">
+    <title>Admin</title>
     <!-- Favicons-->
     <link rel="shortcut icon" href="../img/logo_g3.jpg" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="../img/logo_g3.jpg">
@@ -54,12 +54,12 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
                     <a class="nav-link" href="photo">
                         <i class="fa fa-fw fa-calendar-check-o"></i>
-                        <span class="nav-link-text">Images</span>
+                        <span class="nav-link-text">Logo/Favicon</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
-                        <i class="fa fa-fw fa-list"></i>
+                        <i class="fa fa-fw fa-money"></i>
                         <span class="nav-link-text">Payment</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseMylistings">
@@ -68,6 +68,23 @@
                         </li>
                         <li>
                             <a href="delivery">Pay on Delivery</a>
+                        </li>
+                        <li>
+                            <a href="payment_key">PayStack key</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings3" data-parent="#mylistings">
+                        <i class="fa fa-fw fa-list"></i>
+                        <span class="nav-link-text">Pages</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseMylistings3">
+                        <li>
+                            <a href="homepage">Homepage</a>
+                        </li>
+                        <li>
+                            <a href="footerpage">Footer</a>
                         </li>
                     </ul>
                 </li>
@@ -85,12 +102,18 @@
                         </li>
                     </ul>
                 </li>
-               <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-                    <a class="nav-link" href="ebook">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                    <a class="nav-link" href="seo">
                         <i class="fa fa-fw fa-user"></i>
-                        <span class="nav-link-text">Product</span>
+                        <span class="nav-link-text">Site SEO</span>
                     </a>
-                </li> -->
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                    <a class="nav-link" href="contact">
+                        <i class="fa fa-fw fa-inbox"></i>
+                        <span class="nav-link-text">Contact</span>
+                    </a>
+                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                     <a class="nav-link" href="user-profile">
                         <i class="fa fa-fw fa-user"></i>

@@ -8,12 +8,23 @@ include ('include/header.php');
 ?>
 <!--header section end-->
 <!--body content wrap start-->
+<br><br><br><br>
 <div class="main">
     <!--promo section start-->
     <section class="promo-section pb-50 pt-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12 col-sm-12">
+
+                    <?php
+                    //show if cart is not empty
+                            $ip=getIp();
+
+                            $sql = "SELECT * FROM cart where ip_add='$ip'";
+                                $result = $conn->query($sql);
+
+                                $count_result = mysqli_num_rows($result);
+                                if ($count_result >0) { ?>
                     <table class="table table-borderless table-responsive-sm text-center">
                         <thead>
                             <tr>
@@ -23,6 +34,7 @@ include ('include/header.php');
                                 <th scope="col">SUB TOTAL</th>
                             </tr>
                         </thead>
+                    <?php } ?>
                         <tbody>
                             <?php
                             $ip=getIp();
@@ -46,7 +58,7 @@ include ('include/header.php');
                             <tr class="table-light" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);" id="user-<?php echo $row['p_id'] ?>">
                                 <div>
                                     <th>
-                                        <div class="d-flex flex-wrap p-1"><img src="admin_section/product_images/<?php echo $row_product['product_image'] ?>" width="50" class="img-fluid"> <span class="p-2 text-dark"><b>
+                                        <div class="d-flex flex-wrap p-1"><img src="admin_section/product_images/<?php echo "resized_". $row_product['product_image'] ?>" width="50" class="img-fluid"> <span class="p-2 text-dark"><b>
                                                     <?php echo $row_product['product_title'] ?></b></span></div>
                                         <button class="float-right remove btn btn-danger btn-sm" utype="<?php echo $row_product['product_title'] ?>" subTotal="<?php echo getUpdateItem($row_product['product_id']) ?>" id="<?php echo $row['p_id'] ?>"><i class="fas fa-trash"></i> Remove</button>
                                     </th>
@@ -86,15 +98,24 @@ include ('include/header.php');
 
                          echo "<br> 
                                     <div class='text-center'>
-                                    <img src='img/opps.png' height='50' class=''>
+                                    <img src='img/opps.png' height='170' class=''>
                                     <br><br>
-                                    <h4 class='text-danger'> Opps! no transaction history</h4> <br>
+                                    <h4 class='text-danger'> Opps! No Product in Cart</h4> <br>
                                     <div>";
                     } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <?php
+                    //show if cart is not empty
+                            $ip=getIp();
+
+                            $sql = "SELECT * FROM cart where ip_add='$ip'";
+                                $result = $conn->query($sql);
+
+                                $count_result = mysqli_num_rows($result);
+                                if ($count_result >0) { ?>
             <div class="row justify-content-center p-3">
                 <div class="col-lg-10">
                     <h5 class="float-right">Total: &#8358
@@ -103,9 +124,21 @@ include ('include/header.php');
                     </h5>
                 </div>
             </div>
+        <?php } ?>
             <div class="row justify-content-center p-1">
                 <div class="col-lg-10">
-                    <span class="float-right"><a href="index" class="btn btn-light" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">Continue shopping</a> <a href="pay" class="btn btn-dark">Proceed to checkout</a></span>
+                    <span class="float-right"><a href="index" class="btn btn-light" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">Continue shopping</a>
+                    <?php
+                    //show if cart is not empty
+                            $ip=getIp();
+
+                            $sql = "SELECT * FROM cart where ip_add='$ip'";
+                                $result = $conn->query($sql);
+
+                                $count_result = mysqli_num_rows($result);
+                                if ($count_result >0) { ?>
+                                 <a href="pay" class="btn btn-dark">Proceed to checkout</a>
+                            <?php } ?></span>
                 </div>
             </div>
         </div>
@@ -264,7 +297,7 @@ $('.quantity').on('change', function() {
         data: { value: value, product_id: product_id },
         cache: false,
         success: function(data) {
-            alert(data)
+            // alert(data)
             if (data == true) {
 
                 Swal.fire({

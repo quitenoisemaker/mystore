@@ -2,23 +2,45 @@
 include ('include/header.php');
 
 if (!isset($_SESSION['email'])) {
-  header('locate:login.php');
+  echo "<script>window.open('login','_self')</script>";
 }
+
+$get_customer=mysqli_query($conn, "SELECT * FROM customers WHERE customer_email='$_SESSION[email]'");
+$row_customer=mysqli_fetch_array($get_customer);
 
 ?>
 <!--header section end-->
 <!--body content wrap start-->
 <div class="main">
     <!--promo section start-->
-    <section class="promo-section pb-50 pt-100">
+    <section class="promo-section pb-50" style="padding-top: 120px">
         <div class="container" style="padding: 20px;">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card text-center card-form" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
                         <div class="card-body">
-                            
+                            <h4>Account Overview</h4>
+                            <div class="row ">
+                                <div class="card col-lg-6 p-2">
+                                    <h5><strong>Account Details</strong></h5>
+                                    <hr style="margin: 3px">
+                                    <p><strong><?php echo ucfirst($row_customer['customer_fname']) ." ". ucfirst($row_customer['customer_lname']); ?></strong></p>
+                                    <p><?php echo $row_customer['customer_email']; ?></p>
+                                    <p><?php echo $row_customer['customer_contact']; ?></p>
+                                </div>
+                                <div class="card col-lg-6 p-2">
+                                    <h5><strong>Delivery Address</strong></h5>
+                                    <hr style="margin: 3px">
+                                    <p> <?php echo $row_customer['customer_address']; ?>.</p>
+                                </div>
+                                
+                            </div>
+                            <div class="text-center pt-3">
+                                <a href="edit" class="btn btn-dark btn-block">Edit details</a>
+                                </div>
  
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -19,19 +19,24 @@
                             <div class="footer-nav-wrap ml-4 text-center">
                                 <!-- <a class="navbar-brand p-2" href="index"><img src="image/ekiti2.png" width="150" height="150" alt="logo" class="img-fluid"></a> -->
                                 <h4 class="text-white">FOLLOW US</h4>
+                                <?php
+                      $get_details=mysqli_query($conn, "SELECT * FROM footer");
+                      $row_details=mysqli_fetch_array($get_details);
+                      
+                     ?>
                                 <ul class="list-unstyled social-list mb-0">
                                     <li class="list-inline-item tooltip-hover">
-                                        <a href="#" class="rounded"><span class="ti-facebook" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
+                                        <a href="<?php echo $row_details['facebook']; ?>" class="rounded"><span class="ti-facebook" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
                                         <div class="tooltip-item">Facebook</div>
                                     </li>
-                                    <li class="list-inline-item tooltip-hover"><a href="#" class="rounded"><span class="ti-twitter" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
+                                    <li class="list-inline-item tooltip-hover"><a href="<?php echo $row_details['twitter']; ?>" class="rounded"><span class="ti-twitter" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
                                         <div class="tooltip-item ">Twitter</div>
                                     </li>
-                                    <li class="list-inline-item tooltip-hover"><a href="#" class="rounded"><span class="ti-linkedin" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
+                                    <!-- <li class="list-inline-item tooltip-hover"><a href="#" class="rounded"><span class="ti-linkedin" style="color: white; font-size: 25px"></span>&nbsp&nbsp</a>
                                         <div class="tooltip-item">Linkedin</div>
-                                    </li>
-                                    <li class="list-inline-item tooltip-hover"><a href="#" class="rounded"><span class="ti-dribbble" style="color: white; font-size: 25px"></span></a>
-                                        <div class="tooltip-item">Dribbble</div>
+                                    </li> -->
+                                    <li class="list-inline-item tooltip-hover"><a href="<?php echo $row_details['instagram']; ?>" class="rounded"><span class="ti-instagram" style="color: white; font-size: 25px"></span></a>
+                                        <div class="tooltip-item">Instagram</div>
                                     </li>
                                 </ul>
                             </div>
@@ -60,9 +65,11 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-5 col-lg-5">
-                    <p class="copyright-text pb-0 mb-0">Copyrights © 2020. All
-                        rights reserved by
-                        <a href="http://ekitiyellowpage.com" target="_blank">Ekiti Yellow Pages</a></p>
+                    <p class="copyright-text pb-0 mb-0"><?php
+                      $get_details=mysqli_query($conn, "SELECT * FROM footer");
+                      $row_details=mysqli_fetch_array($get_details);
+                      echo $row_details['copyright'];
+                     ?></p>
                 </div>
             </div>
         </div>

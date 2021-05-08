@@ -85,7 +85,7 @@ if ($new_password != $password_again) {
   if(mysqli_query($conn, $sql)) {
 
       echo "<script>alert('Your password was updated successfully')</script>";
-      // echo "<script>window.open('user_account.php','_self')</script>";
+      echo "<script>window.open('logout','_self')</script>";
       
 
     } 

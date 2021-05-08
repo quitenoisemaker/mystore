@@ -21,6 +21,17 @@ if(isset($_GET['action']) && $_GET['action']=='add_cart'){
 	
 		$ip = getIp();
 		$pro_id= $_POST['add_cart'];
+		if (!isset($_POST['size'])) {
+			$size="empty";
+		}else{
+			$size= $_POST['size'];
+		};
+
+		if (!isset($_POST['color'])) {
+			$color="empty";
+		}else{
+			$color= $_POST['color'];
+		};
 		$qty=1;
 
 		$sql = "SELECT * FROM cart where ip_add='$ip' and p_id='$pro_id'";
@@ -29,8 +40,8 @@ if(isset($_GET['action']) && $_GET['action']=='add_cart'){
 			echo false;
 		}
 		else{
-			$sql="insert into cart(p_id,ip_add,qty)
-		values ('".$pro_id."','".$ip."','".$qty."')";
+			$sql="insert into cart(p_id,ip_add,qty,size,color)
+		values ('".$pro_id."','".$ip."','".$qty."','".$size."','".$color."')";
 			if ($conn->query($sql) === true){
 			echo true;
 			}
@@ -75,12 +86,16 @@ if(isset($_GET['action']) && $_GET['action']=='register'){
 		$lname= $_POST['lname'];
 		$phone= $_POST['phone'];
 		$email= $_POST['email'];
-		$password= $_POST['password'];
+		$address= $_POST['address'];
+		$city= $_POST['city'];
+
+		$password=md5($_POST['password']);
+
 		
 		  $_SESSION['email'] = $email;  
 
-		  $sql="insert into customers( `customer_ip`, `customer_fname`,`customer_lname`, `customer_email`, `customer_pass`, `customer_contact`)
-		values ('".$ip."','".$fname."','".$lname."','".$email."','".$password."','".$phone."')";
+		  $sql="insert into customers( `customer_ip`, `customer_fname`,`customer_lname`, `customer_email`, `customer_pass`,`customer_city`, `customer_contact`, `customer_address`)
+		values ('".$ip."','".$fname."','".$lname."','".$email."','".$password."','".$city."','".$phone."','".$address."')";
 			if ($conn->query($sql) === true){
 			echo true;
 			}
@@ -100,6 +115,7 @@ if(isset($_GET['action']) && $_GET['action']=='login'){
 		$ip = getIp();
 		$email= $_POST['email'];
 		$password= $_POST['password'];
+		$password=md5($password);
 		
 
 		  $sql = "SELECT * FROM customers where customer_email='$email' and customer_pass='$password'";
@@ -126,6 +142,23 @@ if(isset($_GET['action']) && $_GET['action']=='pay_online'){
 			$row_sustomer=mysqli_fetch_array($get_customer);
             
             mysqli_query($conn,"INSERT INTO `online_payment`(`id`, `firstname`, `lastname`, `email`, `phone`, `amount`, `reference_no`, `date_created`) VALUES (NULL,'$row_sustomer[customer_fname]','$row_sustomer[customer_lname]','$_POST[pay_email]','$row_sustomer[customer_contact]','$_POST[pay_money]','$_POST[ref]','$date')");
+
+            $sql = "SELECT * FROM cart where ip_add='$ip'";
+                 $result = $conn->query($sql);
+
+                 $count_result = mysqli_num_rows($result);                                
+                          
+                 while($row=$result->fetch_assoc()){
+                             
+                 $pro_price= "SELECT * FROM products where product_id=$row[p_id]";
+                  $result2 = $conn->query($pro_price);
+                              
+                 while($row_product=$result2->fetch_assoc()){ 
+
+                 	mysqli_query($conn,"INSERT INTO `orders`(`id`, `product_id`, `customer_email`,`ip`, `items`, `qty`, `price`,`payment_method`, `date_created`) VALUES (NULL,'$row_product[product_id]','$_SESSION[email]','$ip','$row_product[product_title]','$row[qty]','$row_product[product_price]','online payment','$date')");
+
+                 }
+             }
 
             $delete_cart=mysqli_query($conn, "DELETE FROM `cart` WHERE ip_add='$ip'");
 
@@ -178,6 +211,24 @@ if(isset($_GET['action']) && $_GET['action']=='delivery_wallet'){
             
             mysqli_query($conn,"INSERT INTO `pay_on_delivery`(`id`, `firstname`, `lastname`, `email`, `phone`, `amount`, `date`) VALUES (NULL,'$row_sustomer[customer_fname]','$row_sustomer[customer_lname]','$_POST[pay_email]','$row_sustomer[customer_contact]','$_POST[pay_amount]','$date')");
 
+
+            $sql = "SELECT * FROM cart where ip_add='$ip'";
+                 $result = $conn->query($sql);
+
+                 $count_result = mysqli_num_rows($result);                                
+                          
+                 while($row=$result->fetch_assoc()){
+                             
+                 $pro_price= "SELECT * FROM products where product_id=$row[p_id]";
+                  $result2 = $conn->query($pro_price);
+                              
+                 while($row_product=$result2->fetch_assoc()){ 
+
+                 	mysqli_query($conn,"INSERT INTO `orders`(`id`, `product_id`, `customer_email`,`ip`, `items`, `qty`, `price`,`payment_method`, `date_created`) VALUES (NULL,'$row_product[product_id]','$_SESSION[email]','$ip','$row_product[product_title]','$row[qty]','$row_product[product_price]','Pay on Delivery','$date')");
+
+                 }
+             }
+
             $delete_cart=mysqli_query($conn, "DELETE FROM `cart` WHERE ip_add='$ip'");
 
             if ($delete_cart) {
@@ -217,4 +268,62 @@ if(isset($_GET['action']) && $_GET['action']=='delivery_wallet'){
 		
 	
 }
+
+
+if(isset($_GET['action']) && $_GET['action']=='update'){
+
+
+            $update_customer="UPDATE customers SET customer_fname='$_POST[fname]',customer_lname='$_POST[lname]',customer_city='$_POST[city]',customer_contact='$_POST[phone]',customer_address='$_POST[address]' WHERE customer_email='$_SESSION[email]'";
+
+            	mysqli_query($conn, $update_customer);
+
+			    echo 'updated';
+			    
+           
+            	
+            
+
+
+     }
+
+     if(isset($_GET['action']) && $_GET['action']=='change_password'){
+
+     	$old_password=md5($_POST['password']);
+     	$new_password=md5($_POST['new_password']);
+     	$password_again=md5($_POST['rnew_password']);
+
+
+           $sql = "SELECT * FROM customers where customer_email ='$_SESSION[email]'";
+      		$result = $conn->query($sql);
+		  if($result->num_rows>0){
+		    while($row=$result->fetch_assoc()){
+		      $pass=$row["customer_pass"];
+		       }
+		}
+
+if ($old_password != $pass ) {
+
+           echo 'wrong';
+        
+      }
+      elseif ($new_password != $password_again) {
+        echo 'no_match';
+      }else{
+
+
+         $sql = "UPDATE customers SET customer_pass='$new_password' WHERE customer_email='$_SESSION[email]'";
+
+  if(mysqli_query($conn, $sql)) {
+
+      echo 'success';
+    }
+
+      }
+			    
+           
+            	
+            
+
+
+     }
 ?>
