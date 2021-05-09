@@ -62,6 +62,17 @@ function format_date($date){
                             <input accept="image/*" type="file" name="myfile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                     </div>
+                     <!-- <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Delivery Amount</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php 
+                                $id=$_GET['id'];
+                                $get_p=mysqli_query($conn, "SELECT * FROM products WHERE product_id='$id'");
+                                $row_p=mysqli_fetch_array($get_p);
+                                echo $row_p['delivery'];
+                            ?>" name="dprice" placeholder="Enter delivery price">
+                        </div>
+                    </div> -->
                     <!-- <div class="col-lg-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Image2 <span class="text-muted">(optional)</span></label>
@@ -232,9 +243,7 @@ function format_date($date){
  
        move_uploaded_file($tmp_name, $location.$name );
 
-       $target_file = $location.$name;
-            $resized_file = $location.'resized_'.$name;
-            image_crop($target_file, $resized_file, $tn_w = 300, $tn_h = 300, $quality = 70);
+       
 
                 //updating file upload
                 $id=$_GET['id'];
@@ -246,6 +255,11 @@ function format_date($date){
                     $name=$name2;
                 }
                 //end
+
+                $target_file = $location.$name;
+            $resized_file = $location.'resized_'.$name;
+            
+            image_crop($target_file, $resized_file, $tn_w = 300, $tn_h = 300, $quality = 70);
             
             
 

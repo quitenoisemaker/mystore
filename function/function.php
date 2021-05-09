@@ -270,6 +270,8 @@ function getBrandPro(){
 
 
 function image_crop($source_image, $destination, $tn_w = 100, $tn_h = 100, $quality = 90){
+
+			
         $info = getimagesize($source_image);
         $imgtype = image_type_to_mime_type($info[2]);
         switch ($imgtype) {

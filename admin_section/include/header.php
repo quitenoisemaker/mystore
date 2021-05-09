@@ -109,6 +109,12 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+                    <a class="nav-link" href="delivery_fee">
+                        <i class="fa fa-fw fa-money"></i>
+                        <span class="nav-link-text">Delivery Fee</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                     <a class="nav-link" href="contact">
                         <i class="fa fa-fw fa-inbox"></i>
                         <span class="nav-link-text">Contact</span>

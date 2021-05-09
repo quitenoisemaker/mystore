@@ -13,6 +13,9 @@ $row_customer=mysqli_fetch_array($get_customer);
 $get_paymentkey=mysqli_query($conn, "SELECT * FROM payment_key WHERE name='paystack'");
 $row_paymentkey=mysqli_fetch_array($get_paymentkey);
 
+$get_delivery=mysqli_query($conn, "SELECT * FROM delivery");
+$row_delivery=mysqli_fetch_array($get_delivery);
+
 $get_seo=mysqli_query($conn, "SELECT * FROM site_seo");
 $row_seo=mysqli_fetch_array($get_seo);
 
@@ -176,10 +179,10 @@ $row_seo=mysqli_fetch_array($get_seo);
                             <p style="font-size: 17px"><b>Total:</b>&#x20A6
                                 <?php echo  number_format(total_price2()); ?>
                             </p>
-                            <p style="font-size: 17px"><b>Delivery fee:</b> &#x20A6 500</p>
+                            <p style="font-size: 17px"><b>Delivery fee:</b> &#x20A6 <?php echo $row_delivery['amount']; ?></p>
                             <div class="text-center">
                                 <h5 class="p-3"><b>Your total amount is
-                                        <?php echo "<span style='color: red'>&#x20A6 ".number_format(total_price2()+ 500)."</span>"; ?></b></h5>
+                                        <?php echo "<span style='color: red'>&#x20A6 ".number_format(total_price2()+ $row_delivery['amount'])."</span>"; ?></b></h5>
                             </div>
                         </div>
                     </div>

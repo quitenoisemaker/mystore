@@ -47,6 +47,12 @@ function format_date($date){
                             <input accept="image/*" type="file" name="myfile" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
                         </div>
                     </div>
+                    <!-- <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Delivery Amount<small class="text-danger">*</small></label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="price" placeholder="Enter selling price">
+                        </div>
+                    </div> -->
                     <!-- <div class="col-lg-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Image2 <span class="text-muted">(optional)</span></label>
