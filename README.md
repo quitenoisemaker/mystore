@@ -1,7 +1,7 @@
 # mystore
 A Simple E-commerce Store for Small and Medium Scale businesses. 
 It was design to make businesses increase sales by connecting them with their online target audience
-<p>Features</p>
+<h3>Features</h3>
 <ul>
   <li>Easy to customize</li>
   <li>Easy Admin dashboard</li>
@@ -11,5 +11,5 @@ Automatic Monthly Order report</li>
  </ul>
 
 <div>
-<img src="images/sales.png" width="600" height="3000">
+<img src="img/mystore222.png" width="500" height="400">
 </div>
