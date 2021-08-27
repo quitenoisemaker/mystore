@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$conn =new mysqli('localhost', 'root', '' , 'ecommerce_db');
-		// $conn =new mysqli('localhost', 'servdqvt_serviceswise', 'dequiet1' , 'servdqvt_skilled_db');
+$conn =new mysqli('localhost', 'your_username', 'your_password' , 'DB_name');
+		
 		if ($conn->connect_error) {
 			echo "<b>Error:</b> Connection failed - $conn->connect_error";
 		}
