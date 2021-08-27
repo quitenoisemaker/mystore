@@ -1,6 +1,6 @@
 <?php
-		$conn =new mysqli('localhost', 'root', '' , 'landing_page');
-		// $conn =new mysqli('localhost', 'servdqvt_serviceswise', 'dequiet1' , 'servdqvt_skilled_db');
+		$conn =new mysqli('localhost', 'ypur_username', 'your_password' , 'DB_name
+		
 		if ($conn->connect_error) {
 			echo "<b>Error:</b> Connection failed - $conn->connect_error";
 		}
