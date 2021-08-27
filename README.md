@@ -1,6 +1,6 @@
-# mystore
+<h2> MyStore</h2>
 A Simple E-commerce Store for Small and Medium Scale businesses. 
-It was design to make businesses increase sales by connecting them with their online target audience
+MyStore can be customise with ease even with your mobile phone. You don't need a Desktop Computer or a programming knowledge to get started
 <h3>Features</h3>
 <ul>
   <li>Easy to customize</li>
