@@ -11,5 +11,5 @@ Automatic Monthly Order report</li>
  </ul>
 
 <div>
-<img src="img/mystore222.png" width="500" height="400">
+<img src="img/mystore222.PNG" width="700" height="600">
 </div>
